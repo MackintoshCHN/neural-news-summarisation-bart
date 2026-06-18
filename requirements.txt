@@ -1,0 +1,17 @@
+datasets
+transformers
+evaluate
+bert-score
+rouge-score
+gradio
+nltk
+sumy
+sentencepiece
+accelerate
+krippendorff
+pandas
+numpy
+torch
+matplotlib
+seaborn
+scikit-learn
