@@ -70,7 +70,7 @@ This project uses two English news summarisation datasets:
 * **XSum**: used for extreme single-sentence summarisation.
 * **CNN/DailyMail**: used for multi-sentence news summarisation evaluation.
 
-The datasets are loaded through Hugging Face in the notebook. The repository does not include the raw or processed dataset text files.
+The datasets are loaded through Hugging Face in the notebook. This repository does not include the raw or processed dataset text files.
 
 Dataset references:
 
@@ -94,6 +94,32 @@ Model references:
 * DistilBART-XSum: https://huggingface.co/sshleifer/distilbart-xsum-12-6
 * DistilBART-CNN: https://huggingface.co/sshleifer/distilbart-cnn-12-6
 * BART-base: https://huggingface.co/facebook/bart-base
+
+## Selected Results
+
+### Fine-tuning Progress
+
+The training curve below shows the optimisation process for the BART-base model fine-tuned on XSum.
+
+![Training Curves](results/figures/01_training_curves.png)
+
+### Automatic Evaluation on XSum
+
+The figure below compares ROUGE and BERTScore results across baseline, pre-trained, and fine-tuned summarisation methods on XSum.
+
+![XSum Metrics](results/figures/02_xsum_metrics_bar.png)
+
+### Automatic Evaluation on CNN/DailyMail
+
+The figure below shows how the same summarisation methods perform on CNN/DailyMail, which has a different summary style from XSum.
+
+![CNN/DailyMail Metrics](results/figures/03_cnndm_metrics_bar.png)
+
+### Human Evaluation
+
+The human evaluation compares summary quality across fluency, faithfulness, and informativeness.
+
+![Human Evaluation Average Scores](results/figures/05_human_eval_average.png)
 
 ## Evaluation
 
@@ -138,25 +164,45 @@ Aggregated human evaluation results are stored in:
 results/human_evaluation/
 ```
 
-## Result Figures
+## Result Files
 
-The main visual outputs are stored in:
+The repository includes selected result artefacts that are safe and useful for project inspection.
+
+### Quantitative Results
+
+```text
+results/quantitative/all_quantitative_evaluation_results.csv
+results/quantitative/cnndm_quantitative_evaluation.csv
+results/quantitative/xsum_quantitative_evaluation.csv
+```
+
+These files summarise automatic evaluation results across datasets and model variants.
+
+### Training Log
+
+```text
+results/training/training_log_history.csv
+```
+
+This file records the training history for the fine-tuned BART model.
+
+### Human Evaluation Results
+
+```text
+results/human_evaluation/human_score_summary.csv
+results/human_evaluation/krippendorff_alpha_results.csv
+results/human_evaluation/model_level_human_scores.csv
+```
+
+These files provide aggregated human evaluation results and inter-annotator agreement scores.
+
+### Figures
 
 ```text
 results/figures/
 ```
 
-Key figures include:
-
-* training and validation loss curves;
-* XSum automatic metric comparison;
-* CNN/DailyMail automatic metric comparison;
-* cross-dataset metric comparison;
-* human evaluation average scores;
-* human evaluation heatmap;
-* per-sample score distribution;
-* per-rater mean scores;
-* Krippendorff's alpha agreement scores.
+The figure directory contains visualisations for model training, automatic evaluation, cross-dataset comparison, human evaluation, and inter-annotator agreement.
 
 ## Setup
 
