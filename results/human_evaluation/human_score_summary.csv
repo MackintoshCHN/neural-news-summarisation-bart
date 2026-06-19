@@ -1,0 +1,4 @@
+metric,mean_score,std_score
+fluency,4.71,0.601
+faithfulness,3.992,1.311
+informativeness,2.639,1.173

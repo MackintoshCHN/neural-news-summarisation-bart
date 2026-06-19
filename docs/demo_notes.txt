@@ -1,0 +1,5 @@
+News Summarisation Gradio Demo
+- Input: news article text
+- Optional input: reference summary
+- Outputs: summaries from Lead-1, TextRank, distilbart-xsum-12-6, distilbart-cnn-12-6, and fine-tuned facebook/bart-base on XSum
+- ROUGE-1, ROUGE-2, and ROUGE-L are shown when a reference summary is provided

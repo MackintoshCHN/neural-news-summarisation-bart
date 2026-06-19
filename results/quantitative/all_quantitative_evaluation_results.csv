@@ -1,0 +1,11 @@
+dataset,model,ROUGE-1,ROUGE-2,ROUGE-L,BERTScore_F1,avg_generated_words,avg_reference_words,ROUGE-L_rank_within_dataset
+XSum,distilbart-xsum-12-6,43.34,20.77,35.4,91.97,18.86,21.25,1
+XSum,facebook/bart-base fine-tuned on XSum,34.93,12.08,27.69,90.36,16.91,21.25,2
+XSum,distilbart-cnn-12-6,21.3,3.79,13.94,85.7,47.6,21.25,3
+XSum,TextRank,17.21,2.42,12.34,85.43,34.8,21.25,4
+XSum,Lead-1,16.38,1.74,12.32,86.19,21.31,21.25,5
+CNN/DailyMail,distilbart-cnn-12-6,35.53,15.16,26.15,88.35,40.48,34.74,1
+CNN/DailyMail,facebook/bart-base fine-tuned on XSum,25.72,8.28,19.49,87.45,17.23,34.74,2
+CNN/DailyMail,distilbart-xsum-12-6,26.93,7.49,18.84,87.29,21.11,34.74,3
+CNN/DailyMail,Lead-1,24.34,8.25,18.06,85.64,21.8,34.74,4
+CNN/DailyMail,TextRank,22.38,5.44,15.99,85.05,37.72,34.74,5

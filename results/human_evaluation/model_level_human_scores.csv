@@ -1,0 +1,5 @@
+model,mean_fluency,mean_faithfulness,mean_informativeness,rated_summaries,avg_num_raters
+BART-finetuned,4.747,2.917,2.67,100,3.0
+DistilBART,4.79,3.52,3.25,100,3.0
+Lead-1,4.797,4.763,2.577,100,3.0
+TextRank,4.507,4.767,2.06,100,3.0

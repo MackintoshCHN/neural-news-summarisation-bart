@@ -1,0 +1,6 @@
+dataset,model,ROUGE-1,ROUGE-2,ROUGE-L,BERTScore_F1,avg_generated_words,avg_reference_words
+XSum,distilbart-xsum-12-6,43.34,20.77,35.4,91.97,18.86,21.25
+XSum,facebook/bart-base fine-tuned on XSum,34.93,12.08,27.69,90.36,16.91,21.25
+XSum,distilbart-cnn-12-6,21.3,3.79,13.94,85.7,47.6,21.25
+XSum,TextRank,17.21,2.42,12.34,85.43,34.8,21.25
+XSum,Lead-1,16.38,1.74,12.32,86.19,21.31,21.25

@@ -1,0 +1,6 @@
+dataset,model,ROUGE-1,ROUGE-2,ROUGE-L,BERTScore_F1,avg_generated_words,avg_reference_words
+CNN/DailyMail,distilbart-cnn-12-6,35.53,15.16,26.15,88.35,40.48,34.74
+CNN/DailyMail,facebook/bart-base fine-tuned on XSum,25.72,8.28,19.49,87.45,17.23,34.74
+CNN/DailyMail,distilbart-xsum-12-6,26.93,7.49,18.84,87.29,21.11,34.74
+CNN/DailyMail,Lead-1,24.34,8.25,18.06,85.64,21.8,34.74
+CNN/DailyMail,TextRank,22.38,5.44,15.99,85.05,37.72,34.74
