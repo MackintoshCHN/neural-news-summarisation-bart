@@ -1,37 +1,37 @@
 # Neural News Summarisation with BART and DistilBART
 
-This repository contains an end-to-end news summarisation project comparing extractive baselines, pre-trained DistilBART checkpoints, and a BART-base model fine-tuned on XSum.
+This repository contains an end-to-end news summarisation workflow comparing extractive baselines, pre-trained DistilBART checkpoints, and a BART-base model fine-tuned on XSum.
 
-The project focuses on news article summarisation across two datasets, **XSum** and **CNN/DailyMail**, and evaluates model behaviour through automatic metrics, qualitative analysis, human evaluation, a command-line demo, and a Gradio demo.
+The project evaluates summarisation behaviour across XSum and CNN/DailyMail using automatic metrics, qualitative error analysis, human evaluation, a command-line interface, and a Gradio demo.
 
 ## Project Overview
 
-Automatic news summarisation aims to convert long news articles into concise summaries while preserving the most important information. This project compares traditional extractive methods with modern abstractive neural models.
+Automatic news summarisation aims to convert long-form news articles into concise summaries while preserving the most important information. This project compares traditional extractive approaches with abstractive neural summarisation models.
 
 The evaluated methods are:
 
 | Method          | Type                     | Description                                                            |
 | --------------- | ------------------------ | ---------------------------------------------------------------------- |
 | Lead-1          | Extractive baseline      | Uses the first sentence of the article as the summary                  |
-| TextRank        | Extractive baseline      | Ranks sentences by graph-based lexical similarity                      |
+| TextRank        | Extractive baseline      | Ranks sentences through graph-based lexical similarity                 |
 | DistilBART-XSum | Abstractive neural model | Pre-trained summarisation checkpoint for XSum-style summaries          |
 | DistilBART-CNN  | Abstractive neural model | Pre-trained summarisation checkpoint for CNN/DailyMail-style summaries |
 | Fine-tuned BART | Abstractive neural model | `facebook/bart-base` fine-tuned on the XSum training subset            |
 
-Although the project is organised around four summarisation approaches, the quantitative evaluation reports five concrete model outputs because DistilBART is tested with two dataset-specific checkpoints.
+Although the workflow is organised around four summarisation approaches, the quantitative evaluation reports five concrete model outputs because DistilBART is tested with two dataset-specific checkpoints.
 
 ## Key Features
 
-* End-to-end summarisation pipeline in a single notebook.
+* End-to-end notebook-based summarisation pipeline.
 * Comparison between extractive baselines and abstractive neural models.
-* Experiments on both XSum and CNN/DailyMail.
+* Experiments on XSum and CNN/DailyMail.
 * Fine-tuning of `facebook/bart-base` on a reduced XSum training subset.
 * Automatic evaluation with ROUGE-1, ROUGE-2, ROUGE-L, and BERTScore.
 * Qualitative error analysis for hallucination, omission, and fluency issues.
 * Human evaluation across fluency, faithfulness, and informativeness.
 * Inter-annotator agreement analysis using Krippendorff's alpha.
-* CLI script for testing summaries from text or file input.
-* Gradio demo notes for interactive side-by-side comparison.
+* CLI script for testing summaries from direct text input or a text file.
+* Gradio demo notes for interactive side-by-side model comparison.
 
 ## Repository Structure
 
@@ -78,7 +78,7 @@ neural-news-summarisation-bart/
 
 The project uses two public news summarisation datasets:
 
-| Dataset       | Summary Style                                                         | Use in Project             |
+| Dataset       | Summary Style                                                         | Use in This Project        |
 | ------------- | --------------------------------------------------------------------- | -------------------------- |
 | XSum          | Short, highly abstractive single-sentence summaries                   | Fine-tuning and evaluation |
 | CNN/DailyMail | Longer news-style summaries, often closer to extractive summarisation | Cross-dataset evaluation   |
@@ -92,22 +92,22 @@ Dataset pages:
 
 ## Experimental Subsets
 
-To keep the project suitable for notebook-based experimentation, reduced subsets are used.
+Reduced subsets are used to keep the workflow suitable for notebook-based experimentation.
 
-| Dataset Split            | Samples | Average Article Words | Average Summary Words |
-| ------------------------ | ------: | --------------------: | --------------------: |
-| XSum train               |   2,000 |                375.38 |                 21.15 |
-| XSum validation          |     200 |                351.10 |                 20.43 |
-| XSum test                |     200 |                400.33 |                 21.25 |
-| CNN/DailyMail train      |   2,000 |                601.81 |                 43.15 |
-| CNN/DailyMail validation |     200 |                562.05 |                 33.32 |
-| CNN/DailyMail test       |     200 |                555.06 |                 34.74 |
+| Dataset       |      Split | Samples | Average Article Words | Average Summary Words |
+| ------------- | ---------: | ------: | --------------------: | --------------------: |
+| XSum          |      Train |   2,000 |                375.38 |                 21.15 |
+| XSum          | Validation |     200 |                351.10 |                 20.43 |
+| XSum          |       Test |     200 |                400.33 |                 21.25 |
+| CNN/DailyMail |      Train |   2,000 |                601.81 |                 43.15 |
+| CNN/DailyMail | Validation |     200 |                562.05 |                 33.32 |
+| CNN/DailyMail |       Test |     200 |                555.06 |                 34.74 |
 
-The maximum input length is 512 tokens, and the maximum target length is 64 tokens in the preprocessing setup.
+During preprocessing, each sample is converted into an article-summary pair. The maximum input length is 512 tokens, and the maximum target length is 64 tokens in the main preprocessing setup.
 
 ## Models
 
-The project uses the following Hugging Face checkpoints:
+The workflow uses the following Hugging Face checkpoints:
 
 | Model                            | Role                                          |
 | -------------------------------- | --------------------------------------------- |
@@ -126,8 +126,6 @@ Fine-tuned model weights are not included in this repository. They can be regene
 ## Fine-Tuning Setup
 
 The fine-tuned model is based on `facebook/bart-base` and trained on the reduced XSum training subset.
-
-Main fine-tuning settings:
 
 | Setting               | Value                          |
 | --------------------- | ------------------------------ |
@@ -153,9 +151,9 @@ Install the project dependencies with:
 pip install -r requirements.txt
 ```
 
-A GPU runtime is recommended for running model inference and BART fine-tuning.
+A GPU runtime is recommended for neural model inference and BART fine-tuning.
 
-The notebook was developed for Google Colab, but the CLI script can also be run locally after installing the dependencies.
+The main notebook was developed and tested in Google Colab. The CLI script can be run locally after installing the dependencies. Full local execution of the notebook may require adapting Colab or Google Drive paths and regenerating intermediate outputs.
 
 ## Running the Notebook
 
@@ -176,7 +174,7 @@ The notebook includes:
 7. BART-base fine-tuning.
 8. Quantitative evaluation.
 9. Qualitative error analysis.
-10. Human evaluation preparation and aggregation.
+10. Human-evaluation preparation and aggregation.
 11. Result visualisation.
 12. CLI and Gradio demo preparation.
 
@@ -264,7 +262,7 @@ docs/demo_notes.txt
 
 ## Evaluation Metrics
 
-The project uses automatic and human evaluation.
+The project uses automatic evaluation, qualitative error analysis, and human evaluation.
 
 ### Automatic Evaluation
 
@@ -292,15 +290,15 @@ Heuristic screening is used to identify candidate error samples for further insp
 Human evaluation is conducted on a focused subset:
 
 | Item                  | Value |
-| --------------------- | ----- |
-| Source articles       | 100   |
-| Summaries per article | 4     |
-| Annotators            | 3     |
-| Records per annotator | 400   |
+| --------------------- | ----: |
+| Source articles       |   100 |
+| Summaries per article |     4 |
+| Annotators            |     3 |
+| Records per annotator |   400 |
 | Total rating records  | 1,200 |
-| Score scale           | 1–5   |
+| Score scale           |   1–5 |
 
-The three dimensions are:
+The three evaluation dimensions are:
 
 | Dimension       | Meaning                                                             |
 | --------------- | ------------------------------------------------------------------- |
@@ -393,8 +391,9 @@ The following files are intentionally excluded:
 * Full pre-trained model prediction files.
 * Full fine-tuned model prediction files.
 * Fine-tuned model weights.
-* Original completed rater sheets containing article text and generated summaries.
+* Original completed rater sheets containing article text, reference summaries, or generated summaries.
 * Large archive files.
+* Local Colab or Google Drive cache files.
 
 These files are excluded because they are large, reproducible from the notebook, or contain dataset-derived text.
 
@@ -409,11 +408,23 @@ The notebook can be rerun to regenerate local intermediate files. Full reproduct
 5. Fine-tuning BART-base on XSum.
 6. Regenerating prediction files.
 7. Preparing human-evaluation templates.
-8. Collecting completed rater sheets.
+8. Providing completed rater sheets.
 9. Running human-evaluation aggregation.
 10. Recreating result figures.
 
 The repository provides cleaned rater scores and aggregate result files for transparent inspection of final results.
+
+## Current Execution Status
+
+| Component                     | Status                                                      |
+| ----------------------------- | ----------------------------------------------------------- |
+| Main notebook                 | Colab-first workflow                                        |
+| Local CLI                     | Supported after dependency installation                     |
+| Full local notebook run       | Requires path adaptation and regenerated intermediate files |
+| Raw datasets                  | Not included; loaded through Hugging Face                   |
+| Fine-tuned weights            | Not included; can be regenerated                            |
+| Full prediction files         | Not included                                                |
+| Aggregate results and figures | Included                                                    |
 
 ## Limitations
 
@@ -423,18 +434,19 @@ The repository provides cleaned rater scores and aggregate result files for tran
 * ROUGE and BERTScore do not fully capture factual consistency or usefulness.
 * Fine-tuned model weights are not included and need to be regenerated locally.
 * Cross-dataset transfer remains challenging because XSum and CNN/DailyMail use different summary styles.
+* Full local notebook execution requires adapting Colab-specific paths.
 
 ## References
 
-* Wafaa S. El-Kassas, Cherif R. Salama, Ahmed A. Rafea, and Hoda K. Mohamed. *Automatic Text Summarization: A Comprehensive Survey*. Expert Systems with Applications, 165:113679, 2021.
-* Shashank Bhargav, Abhinav Choudhury, Shruti Kaushik, Ravindra Shukla, and Varun Dutt. *A Comparison Study of Abstractive and Extractive Methods for Text Summarization*. Proceedings of PCCDS 2021, Springer, 2022.
-* Brian Keith, Michael Horning, and Tanushree Mitra. *Evaluating the Inverted Pyramid Structure through Automatic 5W1H Extraction and Summarization*. Computational Journalism, 2020.
-* Rada Mihalcea and Paul Tarau. *TextRank: Bringing Order into Text*. Proceedings of EMNLP, 2004.
-* Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. *Attention Is All You Need*. Advances in Neural Information Processing Systems, 2017.
-* Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Veselin Stoyanov, and Luke Zettlemoyer. *BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension*. Proceedings of ACL, 2020.
-* Chin-Yew Lin. *ROUGE: A Package for Automatic Evaluation of Summaries*. Text Summarization Branches Out, 2004.
-* Mousumi Akter, Naman Bansal, and Shubhra Kanti Karmaker. *Revisiting Automatic Evaluation of Extractive Summarization Task: Can We Do Better than ROUGE?* Findings of ACL, 2022.
-* Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q. Weinberger, and Yoav Artzi. *BERTScore: Evaluating Text Generation with BERT*. ICLR, 2020.
+* Wafaa S. El-Kassas, Cherif R. Salama, Ahmed A. Rafea, and Hoda K. Mohamed. Automatic Text Summarization: A Comprehensive Survey. Expert Systems with Applications, 165:113679, 2021.
+* Shashank Bhargav, Abhinav Choudhury, Shruti Kaushik, Ravindra Shukla, and Varun Dutt. A Comparison Study of Abstractive and Extractive Methods for Text Summarization. Proceedings of PCCDS 2021, Springer, 2022.
+* Brian Keith, Michael Horning, and Tanushree Mitra. Evaluating the Inverted Pyramid Structure through Automatic 5W1H Extraction and Summarization. Computational Journalism, 2020.
+* Rada Mihalcea and Paul Tarau. TextRank: Bringing Order into Text. Proceedings of EMNLP, 2004.
+* Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention Is All You Need. Advances in Neural Information Processing Systems, 2017.
+* Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Veselin Stoyanov, and Luke Zettlemoyer. BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension. Proceedings of ACL, 2020.
+* Chin-Yew Lin. ROUGE: A Package for Automatic Evaluation of Summaries. Text Summarization Branches Out, 2004.
+* Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q. Weinberger, and Yoav Artzi. BERTScore: Evaluating Text Generation with BERT. ICLR, 2020.
+* Mousumi Akter, Naman Bansal, and Shubhra Kanti Karmaker. Revisiting Automatic Evaluation of Extractive Summarization Task: Can We Do Better than ROUGE? Findings of ACL, 2022.
 * XSum dataset: https://huggingface.co/datasets/EdinburghNLP/xsum
 * CNN/DailyMail dataset: https://huggingface.co/datasets/abisee/cnn_dailymail
 * DistilBART-XSum model: https://huggingface.co/sshleifer/distilbart-xsum-12-6
@@ -445,6 +457,8 @@ The repository provides cleaned rater scores and aggregate result files for tran
 
 This repository contains project code, cleaned result summaries, visualisations, and documentation.
 
+No open-source licence is currently granted for the original code, documentation, or generated analysis files in this repository. Reuse, redistribution, or derivative use requires permission.
+
 The underlying datasets and pre-trained models are provided by their original authors and hosting platforms. Users should follow the licences and terms of the original datasets and models.
 
-Dataset-derived full text, full prediction files, and fine-tuned model weights are not redistributed in this repository.
+Dataset-derived full text, full prediction files, raw completed rater sheets, and fine-tuned model weights are not redistributed in this repository.
