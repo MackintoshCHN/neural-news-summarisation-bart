@@ -4,6 +4,8 @@ This repository contains an end-to-end news summarisation workflow comparing ext
 
 The project evaluates summarisation behaviour across XSum and CNN/DailyMail using automatic metrics, qualitative error analysis, human evaluation, a command-line interface, and a Gradio demo.
 
+![Cross-dataset comparison](results/figures/04_cross_dataset_comparison.png)
+
 ## Project Overview
 
 Automatic news summarisation aims to convert long-form news articles into concise summaries while preserving the most important information. This project compares traditional extractive approaches with abstractive neural summarisation models.
@@ -37,41 +39,41 @@ Although the workflow is organised around four summarisation approaches, the qua
 
 ```text
 neural-news-summarisation-bart/
-├── README.md
-├── requirements.txt
-├── .gitignore
-├── News_Summarisation_with_BART_and_DistilBART.ipynb
-├── src/
-│   └── summarise_cli.py
-├── examples/
-│   └── sample_news_article.txt
 ├── docs/
 │   └── demo_notes.txt
-└── results/
-    ├── quantitative/
-    │   ├── all_quantitative_evaluation_results.csv
-    │   ├── cnndm_quantitative_evaluation.csv
-    │   └── xsum_quantitative_evaluation.csv
-    ├── training/
-    │   └── training_log_history.csv
-    ├── human_evaluation/
-    │   ├── human_score_summary.csv
-    │   ├── krippendorff_alpha_results.csv
-    │   ├── model_level_human_scores.csv
-    │   └── rater_scores/
-    │       ├── human_evaluation_rater_01_scores.csv
-    │       ├── human_evaluation_rater_02_scores.csv
-    │       └── human_evaluation_rater_03_scores.csv
-    └── figures/
-        ├── 01_training_curves.png
-        ├── 02_xsum_metrics_bar.png
-        ├── 03_cnndm_metrics_bar.png
-        ├── 04_cross_dataset_comparison.png
-        ├── 05_human_eval_average.png
-        ├── 06_human_eval_heatmap.png
-        ├── 07_human_eval_boxplot.png
-        ├── 08_per_annotator_scores.png
-        └── 09_krippendorff_alpha.png
+├── examples/
+│   └── sample_news_article.txt
+├── results/
+│   ├── figures/
+│   │   ├── 01_training_curves.png
+│   │   ├── 02_xsum_metrics_bar.png
+│   │   ├── 03_cnndm_metrics_bar.png
+│   │   ├── 04_cross_dataset_comparison.png
+│   │   ├── 05_human_eval_average.png
+│   │   ├── 06_human_eval_heatmap.png
+│   │   ├── 07_human_eval_boxplot.png
+│   │   ├── 08_per_annotator_scores.png
+│   │   └── 09_krippendorff_alpha.png
+│   ├── human_evaluation/
+│   │   ├── rater_scores/
+│   │   │   ├── human_evaluation_rater_01_scores.csv
+│   │   │   ├── human_evaluation_rater_02_scores.csv
+│   │   │   └── human_evaluation_rater_03_scores.csv
+│   │   ├── human_score_summary.csv
+│   │   ├── krippendorff_alpha_results.csv
+│   │   └── model_level_human_scores.csv
+│   ├── quantitative/
+│   │   ├── all_quantitative_evaluation_results.csv
+│   │   ├── cnndm_quantitative_evaluation.csv
+│   │   └── xsum_quantitative_evaluation.csv
+│   └── training/
+│       └── training_log_history.csv
+├── src/
+│   └── summarise_cli.py
+├── .gitignore
+├── News_Summarisation_with_BART_and_DistilBART.ipynb
+├── README.md
+└── requirements.txt
 ```
 
 ## Datasets
@@ -370,14 +372,46 @@ Krippendorff's alpha is reported for each human-evaluation dimension. Agreement 
 
 ## Included Results
 
-The repository includes aggregate and cleaned result files:
+The repository includes aggregate and cleaned result files for inspection.
 
-```text
-results/quantitative/
-results/training/
-results/human_evaluation/
-results/figures/
-```
+### Quantitative Evaluation Files
+
+| File                                                           | Description                                |
+| -------------------------------------------------------------- | ------------------------------------------ |
+| `results/quantitative/all_quantitative_evaluation_results.csv` | Combined automatic evaluation results      |
+| `results/quantitative/xsum_quantitative_evaluation.csv`        | XSum automatic evaluation results          |
+| `results/quantitative/cnndm_quantitative_evaluation.csv`       | CNN/DailyMail automatic evaluation results |
+
+### Training File
+
+| File                                        | Description                                     |
+| ------------------------------------------- | ----------------------------------------------- |
+| `results/training/training_log_history.csv` | Fine-tuning training and validation log history |
+
+### Human Evaluation Files
+
+| File                                                                         | Description                       |
+| ---------------------------------------------------------------------------- | --------------------------------- |
+| `results/human_evaluation/human_score_summary.csv`                           | Human evaluation score summary    |
+| `results/human_evaluation/krippendorff_alpha_results.csv`                    | Inter-annotator agreement results |
+| `results/human_evaluation/model_level_human_scores.csv`                      | Model-level human score summary   |
+| `results/human_evaluation/rater_scores/human_evaluation_rater_01_scores.csv` | Cleaned rater 01 score file       |
+| `results/human_evaluation/rater_scores/human_evaluation_rater_02_scores.csv` | Cleaned rater 02 score file       |
+| `results/human_evaluation/rater_scores/human_evaluation_rater_03_scores.csv` | Cleaned rater 03 score file       |
+
+### Figure Files
+
+| File                                              | Description                               |
+| ------------------------------------------------- | ----------------------------------------- |
+| `results/figures/01_training_curves.png`          | Fine-tuning loss curves                   |
+| `results/figures/02_xsum_metrics_bar.png`         | XSum automatic metric comparison          |
+| `results/figures/03_cnndm_metrics_bar.png`        | CNN/DailyMail automatic metric comparison |
+| `results/figures/04_cross_dataset_comparison.png` | Cross-dataset metric comparison           |
+| `results/figures/05_human_eval_average.png`       | Average human evaluation scores           |
+| `results/figures/06_human_eval_heatmap.png`       | Human evaluation heatmap                  |
+| `results/figures/07_human_eval_boxplot.png`       | Human evaluation score distribution       |
+| `results/figures/08_per_annotator_scores.png`     | Per-annotator score comparison            |
+| `results/figures/09_krippendorff_alpha.png`       | Krippendorff's alpha visualisation        |
 
 These files support inspection of the reported results without exposing full dataset-derived text.
 
@@ -435,6 +469,18 @@ The repository provides cleaned rater scores and aggregate result files for tran
 * Fine-tuned model weights are not included and need to be regenerated locally.
 * Cross-dataset transfer remains challenging because XSum and CNN/DailyMail use different summary styles.
 * Full local notebook execution requires adapting Colab-specific paths.
+
+## Future Work
+
+Potential extensions include:
+
+* Fine-tuning on larger training subsets.
+* Adding factuality-focused evaluation metrics.
+* Comparing additional summarisation models.
+* Improving decoding strategies for length control and factual consistency.
+* Expanding human evaluation with more samples or additional annotators.
+* Converting the notebook workflow into a more modular Python package.
+* Adding cached lightweight demo outputs for faster local testing.
 
 ## References
 
