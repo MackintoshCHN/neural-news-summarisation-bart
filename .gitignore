@@ -216,3 +216,130 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# ================================
+
+# Project-specific ignores
+
+# Neural news summarisation project
+
+# ================================
+
+# Local data and dataset caches
+
+data/
+datasets/
+raw_data/
+processed_data/
+external_data/
+dataset_cache/
+hf_cache/
+huggingface_cache/
+transformers_cache/
+.cache/huggingface/
+.cache/torch/
+.cache/pip/
+
+# Hugging Face / datasets intermediate files
+
+*.arrow
+*.parquet
+dataset_info.json
+state.json
+
+# Model checkpoints and trained weights
+
+checkpoints/
+checkpoint-*/
+models/
+saved_models/
+model_outputs/
+trainer_output/
+training_outputs/
+fine_tuned_model/
+fine-tuned-model/
+fine_tuned_bart/
+fine-tuned-bart/
+bart_finetuned/
+bart-finetuned/
+distilbart_outputs/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+
+# Experiment tracking and training logs
+
+wandb/
+runs/
+mlruns/
+tensorboard/
+lightning_logs/
+
+# Large or full prediction outputs
+
+predictions/
+generated_predictions/
+generated_summaries/
+baseline_outputs/
+inference_outputs/
+full_outputs/
+full_predictions/
+*_predictions.csv
+*_predictions.json
+*_predictions.jsonl
+*_generated_summaries.csv
+*_generated_summaries.json
+*_generated_summaries.jsonl
+*_full_outputs.csv
+*_full_predictions.csv
+
+# Human evaluation working files
+
+human_evaluation_outputs/
+human_evaluation_templates/
+human_evaluation_working/
+human_evaluation_completed/
+human_evaluation_completed_*.csv
+human_evaluation_completed_rater_*.csv
+*_rater_raw.csv
+*_rater_completed.csv
+
+# Colab and Google Drive local paths
+
+drive/
+content/
+sample_data/
+Colab Notebooks/
+*.ipynb_checkpoints/
+
+# Local notebooks or temporary exports
+
+*_scratch.ipynb
+*_draft.ipynb
+*_backup.ipynb
+*_tmp.ipynb
+*_temp.ipynb
+*.nbconvert.ipynb
+
+# Temporary files
+
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+
+# Archives and large packaged files
+
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
